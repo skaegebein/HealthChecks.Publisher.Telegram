@@ -4,22 +4,9 @@
 
 ## Prerequisites
 
-- A Telegram bot token. You can create a bot and obtain a token by following the instructions in the [Telegram Bot API documentation](https://core.telegram.org/bots/api).
-- A chat ID where the bot will send messages. You can get the chat ID by:
-  1. **Start a chat with your bot** - Send `/start` or any message to your bot in Telegram
-  2. **Get the chat ID** - Visit `https://api.telegram.org/bot<YourBotToken>/getUpdates` (replace `<YourBotToken>` with your actual bot token)
-  3. **Find your chat ID** - Look for `"chat":{"id":123456789}` in the JSON response
-  4. **For group chats** - Add the bot to the group and send a message, then follow the same steps (group chat IDs are usually negative numbers)
-
-<!-- ## Installation
-  You can install the `HealthChecks.Publisher.Telegram` package via NuGet Package Manager or by using the .NET CLI.
-
-````bash
-dotnet add package HealthChecks.Publisher.Telegram
-``` -->
-
-- Configure health checks in your ASP.NET Core application. You can add health checks using the `AddHealthChecks` method in the `ConfigureServices` method of your `Startup` class or in the `Program.cs` file if you're using the minimal hosting model.
-- Configure the global health check publisher options using the `HealthCheckPublisherOptions` class. You can set options such as `Delay` and `Period` to control the frequency of health check result publishing. These options can be set globally or per health check registration.
+- **Telegram bot token** - Create a bot via [@BotFather](https://t.me/botfather) on Telegram
+- **Chat ID** - Send a message to your bot, then visit `https://api.telegram.org/bot<YourBotToken>/getUpdates` to find the chat ID
+- **ASP.NET Core health checks** - Configure using `AddHealthChecks()` in your application
 
 ### Example 1: Individual publisher options per health check registration
 
