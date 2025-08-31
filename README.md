@@ -5,10 +5,27 @@
 ## Prerequisites
 
 - **Telegram bot token** - Create a bot via [@BotFather](https://t.me/botfather) on Telegram
-- **Chat ID** - Send a message to your bot, then visit `https://api.telegram.org/bot<YourBotToken>/getUpdates` to find the chat ID
+- **Chat ID** - Send a message to your bot, then visit `https://api.telegram.org/bot<your-bot-token>/getUpdates` to find the chat ID
 - **ASP.NET Core health checks** - Configure using `AddHealthChecks()` in your application
 
-### Example 1: Individual publisher options per health check registration
+## Quick Start
+
+```cs
+builder.Services.AddHealthChecks()
+    .AddTelegramPublisher(t =>
+    {
+        // your bot token
+        t.BotToken = "3141592654:88888000000000088888111113333355555";
+        // your chat id
+        t.ChatId = -2718281828;
+    });
+```
+
+## ASP.NET Core Health Check Publisher Configuration
+
+[HealthCheckPublisherOptions](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-8.0#health-check-publisher) configure the behavior of health check publishers. You can set options globally or per health check registration.
+
+### Individual Publisher Options
 
 ```cs
 public class RandomHealthCheck : IHealthCheck
@@ -30,7 +47,7 @@ builder.Services.AddHealthChecks()
     });
 ```
 
-### Example 2: Global publisher options for all health checks
+### Global Publisher Options
 
 ```cs
 // add health check
@@ -45,11 +62,9 @@ builder.Services.Configure<HealthCheckPublisherOptions>(options =>
 });
 ```
 
-## Registration of the Telegram Health Check Publisher
+## Telegram Publisher Configuration
 
-There are several ways to register the Telegram health check publisher and configure health check publisher options.
-
-### Option 1: Appsettings section with default publisher options
+### Appsettings Section
 
 ```json
 {
@@ -62,50 +77,15 @@ There are several ways to register the Telegram health check publisher and confi
 ```
 
 ```cs
-// use appsettings key and default publisher options
+// use appsettings key
 builder.Services.AddHealthChecks()
     .AddTelegramPublisher("Telegram");
 ```
 
-### Option 2: Appsettings section with custom publisher options
-
-```json
-{
-  "Telegram": {
-    "BaseUrl": "https://api.telegram.org",
-    "BotToken": "3141592654:88888000000000088888111113333355555",
-    "ChatId": -2718281828
-  }
-}
-```
+### Inline Configuration
 
 ```cs
-// use appsettings key and custom publisher options
-builder.Services.AddHealthChecks()
-    .AddTelegramPublisher("Telegram", p =>
-    {
-        // publish only on status change
-        p.Predicate = (current, previous) => previous is null || current.Status != previous.Status;
-        // send emoji, status and duration in milliseconds
-        p.Formatter = (report) =>
-        {
-            var emoji = report.Status switch
-            {
-                HealthStatus.Healthy => "✅",
-                HealthStatus.Degraded => "⚠️",
-                HealthStatus.Unhealthy => "❌",
-                _ => "❔",
-            };
-
-            return $"{emoji} Status: {report.Status}, Duration: {report.TotalDuration.TotalMilliseconds} ms";
-        };
-    });
-```
-
-### Option 3: Inline configuration and default publisher options
-
-```cs
-// use inline configuration and default publisher options
+// use inline configuration
 builder.Services.AddHealthChecks()
     .AddTelegramPublisher(t =>
     {
@@ -117,7 +97,7 @@ builder.Services.AddHealthChecks()
     });
 ```
 
-### Option 4: Inline configuration and custom publisher options
+### Advanced Configuration
 
 ```cs
 // use inline configuration and custom publisher options
@@ -149,7 +129,7 @@ builder.Services.AddHealthChecks()
     });
 ```
 
-## Full example
+## Complete Example
 
 ```cs
 using HealthChecks.Publisher.Telegram;
