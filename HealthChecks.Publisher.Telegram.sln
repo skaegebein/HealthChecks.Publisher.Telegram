@@ -7,6 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{57D99CB6-24E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthChecks.Publisher.Telegram", "src\HealthChecks.Publisher.Telegram\HealthChecks.Publisher.Telegram.csproj", "{4B92D697-B9FF-4F8E-904F-26426A9100F1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{48620E14-0AF5-424B-BF14-38A9DC0D872E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthChecks.Publisher.Telegram.Tests", "test\HealthChecks.Publisher.Telegram.Tests\HealthChecks.Publisher.Telegram.Tests.csproj", "{E7A0309B-5274-48C6-B65A-C4774136ED77}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +21,17 @@ Global
 		{4B92D697-B9FF-4F8E-904F-26426A9100F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B92D697-B9FF-4F8E-904F-26426A9100F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B92D697-B9FF-4F8E-904F-26426A9100F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7A0309B-5274-48C6-B65A-C4774136ED77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7A0309B-5274-48C6-B65A-C4774136ED77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7A0309B-5274-48C6-B65A-C4774136ED77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7A0309B-5274-48C6-B65A-C4774136ED77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4B92D697-B9FF-4F8E-904F-26426A9100F1} = {57D99CB6-24EF-45C0-B8B0-ABF574AD6F0A}
+		{E7A0309B-5274-48C6-B65A-C4774136ED77} = {48620E14-0AF5-424B-BF14-38A9DC0D872E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {87153D68-24F1-4CE7-BA70-0AA66867DD2F}
