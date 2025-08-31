@@ -5,7 +5,7 @@ namespace HealthChecks.Publisher.Telegram;
 /// <summary>
 /// Contains options to configure the publishing behavior of health check results.
 /// </summary>
-public sealed class PublishOptions
+public sealed class PublisherOptions
 {
     /// <summary>
     /// Gets or sets the predicate used to determine whether a health check result should be published.

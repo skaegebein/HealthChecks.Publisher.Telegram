@@ -8,11 +8,11 @@ namespace HealthChecks.Publisher.Telegram;
 internal class TelegramPublisher(
     ILogger<TelegramPublisher> logger,
     IOptions<TelegramOptions> telegramOptions,
-    IOptions<PublishOptions> publishOptions,
+    IOptions<PublisherOptions> publisherOptions,
     IHttpClientFactory httpClientFactory) : IHealthCheckPublisher
 {
     private readonly ILogger<TelegramPublisher> _logger = logger;
-    private readonly IOptions<PublishOptions> _publishOptions = publishOptions;
+    private readonly IOptions<PublisherOptions> _publisherOptions = publisherOptions;
     private readonly IHttpClientFactory _httpClientFactory = httpClientFactory;
     private readonly string _url = $"{telegramOptions.Value.BaseUrl}/bot{telegramOptions.Value.BotToken}/sendMessage";
     private readonly long _chatId = telegramOptions.Value.ChatId;
@@ -23,7 +23,7 @@ internal class TelegramPublisher(
     {
         _logger.LogDebug("Previous status: {}, Current status: {}", _previousReport?.Status, report.Status);
 
-        if (!_publishOptions.Value.Predicate(report, _previousReport))
+        if (!_publisherOptions.Value.Predicate(report, _previousReport))
         {
             _logger.LogDebug("Skipping publishing result for status: {}", report.Status);
             _previousReport = report;
@@ -33,7 +33,7 @@ internal class TelegramPublisher(
         var payload = new
         {
             chat_id = _chatId,
-            text = _publishOptions.Value.Formatter(report),
+            text = _publisherOptions.Value.Formatter(report),
         };
 
         _logger.LogInformation("Publishing result: {}", report.Status);

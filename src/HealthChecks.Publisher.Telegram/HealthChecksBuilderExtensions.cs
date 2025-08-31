@@ -23,7 +23,7 @@ public static class HealthChecksBuilderExtensions
             .Validate(ValidateTelegramOptions)
             .ValidateOnStart();
 
-        builder.Services.AddOptions<PublishOptions>();
+        builder.Services.AddOptions<PublisherOptions>();
 
         return builder.AddTelegramPublisherCore();
     }
@@ -41,7 +41,7 @@ public static class HealthChecksBuilderExtensions
             .Validate(ValidateTelegramOptions)
             .ValidateOnStart();
 
-        builder.Services.AddOptions<PublishOptions>();
+        builder.Services.AddOptions<PublisherOptions>();
 
         return builder.AddTelegramPublisherCore();
     }
@@ -51,17 +51,17 @@ public static class HealthChecksBuilderExtensions
     /// </summary>
     /// <param name="builder">The <see cref="IHealthChecksBuilder"/>.</param>
     /// <param name="appSettingsKey">The configuration section key.</param>
-    /// <param name="configurePublish">The action to configure publish options.</param>
+    /// <param name="configurePublisher">The action to configure publish options.</param>
     /// <returns>The <see cref="IHealthChecksBuilder"/> for chaining.</returns>
-    public static IHealthChecksBuilder AddTelegramPublisher(this IHealthChecksBuilder builder, string appSettingsKey, Action<PublishOptions> configurePublish)
+    public static IHealthChecksBuilder AddTelegramPublisher(this IHealthChecksBuilder builder, string appSettingsKey, Action<PublisherOptions> configurePublisher)
     {
         builder.Services.AddOptions<TelegramOptions>()
             .BindConfiguration(appSettingsKey)
             .Validate(ValidateTelegramOptions)
             .ValidateOnStart();
 
-        builder.Services.AddOptions<PublishOptions>()
-            .Configure(configurePublish);
+        builder.Services.AddOptions<PublisherOptions>()
+            .Configure(configurePublisher);
 
         return builder.AddTelegramPublisherCore();
     }
@@ -71,17 +71,17 @@ public static class HealthChecksBuilderExtensions
     /// </summary>
     /// <param name="builder">The <see cref="IHealthChecksBuilder"/>.</param>
     /// <param name="configureTelegram">The action to configure Telegram options.</param>
-    /// <param name="configurePublish">The action to configure publish options.</param>
+    /// <param name="configurePublisher">The action to configure publish options.</param>
     /// <returns>The <see cref="IHealthChecksBuilder"/> for chaining.</returns>
-    public static IHealthChecksBuilder AddTelegramPublisher(this IHealthChecksBuilder builder, Action<TelegramOptions> configureTelegram, Action<PublishOptions> configurePublish)
+    public static IHealthChecksBuilder AddTelegramPublisher(this IHealthChecksBuilder builder, Action<TelegramOptions> configureTelegram, Action<PublisherOptions> configurePublisher)
     {
         builder.Services.AddOptions<TelegramOptions>()
             .Configure(configureTelegram)
             .Validate(ValidateTelegramOptions)
             .ValidateOnStart();
 
-        builder.Services.AddOptions<PublishOptions>()
-            .Configure(configurePublish);
+        builder.Services.AddOptions<PublisherOptions>()
+            .Configure(configurePublisher);
 
         return builder.AddTelegramPublisherCore();
     }
