@@ -29,7 +29,7 @@ public class TelegramPublisherTest
         _telegramOptions = new TelegramOptions()
         {
             BaseUrl = "https://api.telegram.org",
-            BotToken = "3141592654:66666000000000066666111113333355555",
+            BotToken = "3141592654:88888000000000088888111113333355555",
             ChatId = -2718281828,
         };
 

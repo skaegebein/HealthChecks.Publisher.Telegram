@@ -68,7 +68,7 @@ There are several ways to register the Telegram health check publisher and confi
 {
   "Telegram": {
     "BaseUrl": "https://api.telegram.org",
-    "BotToken": "3141592654:66666000000000066666111113333355555",
+    "BotToken": "3141592654:88888000000000088888111113333355555",
     "ChatId": -2718281828
   }
 }
@@ -86,7 +86,7 @@ builder.Services.AddHealthChecks()
 {
   "Telegram": {
     "BaseUrl": "https://api.telegram.org",
-    "BotToken": "3141592654:66666000000000066666111113333355555",
+    "BotToken": "3141592654:88888000000000088888111113333355555",
     "ChatId": -2718281828
   }
 }
@@ -124,7 +124,7 @@ builder.Services.AddHealthChecks()
     {
         t.BaseUrl = "https://api.telegram.org";
         // your bot token
-        t.BotToken = "3141592654:66666000000000066666111113333355555";
+        t.BotToken = "3141592654:88888000000000088888111113333355555";
         // your chat id
         t.ChatId = -2718281828;
     });
@@ -139,7 +139,7 @@ builder.Services.AddHealthChecks()
     {
         t.BaseUrl = "https://api.telegram.org";
         // your bot token
-        t.BotToken = "3141592654:66666000000000066666111113333355555";
+        t.BotToken = "3141592654:88888000000000088888111113333355555";
         // your chat id
         t.ChatId = -2718281828;
     }, p =>
@@ -182,7 +182,7 @@ public class Program
             {
                 t.BaseUrl = "https://api.telegram.org";
                 // your bot token
-                t.BotToken = "3141592654:66666000000000066666111113333355555";
+                t.BotToken = "3141592654:88888000000000088888111113333355555";
                 // your chat id
                 t.ChatId = -2718281828;
             }, p =>

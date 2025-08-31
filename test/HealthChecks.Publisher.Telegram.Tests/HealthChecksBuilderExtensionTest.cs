@@ -8,12 +8,12 @@ namespace HealthChecks.Publisher.Telegram.Tests;
 public class HealthChecksBuilderExtensionsTest
 {
     [Theory]
-    [InlineData("", "3141592654:66666000000000066666111113333355555", -2718281828, false)] // Invalid BaseUrl (empty)
-    [InlineData("http://api.telegram.org", "3141592654:66666000000000066666111113333355555", -2718281828, false)] // Invalid BaseUrl (not HTTPS)
-    [InlineData("https://", "3141592654:66666000000000066666111113333355555", -2718281828, false)] // Invalid BaseUrl (not well-formed URI)
+    [InlineData("", "3141592654:88888000000000088888111113333355555", -2718281828, false)] // Invalid BaseUrl (empty)
+    [InlineData("http://api.telegram.org", "3141592654:88888000000000088888111113333355555", -2718281828, false)] // Invalid BaseUrl (not HTTPS)
+    [InlineData("https://", "3141592654:88888000000000088888111113333355555", -2718281828, false)] // Invalid BaseUrl (not well-formed URI)
     [InlineData("https://api.telegram.org", "", -2718281828, false)] // Invalid BotToken (empty)
-    [InlineData("https://api.telegram.org", "3141592654:66666000000000066666111113333355555", 0, false)] // Invalid ChatId (zero)
-    [InlineData("https://api.telegram.org", "3141592654:66666000000000066666111113333355555", -2718281828, true)] // Valid
+    [InlineData("https://api.telegram.org", "3141592654:88888000000000088888111113333355555", 0, false)] // Invalid ChatId (zero)
+    [InlineData("https://api.telegram.org", "3141592654:88888000000000088888111113333355555", -2718281828, true)] // Valid
     public void AddTelegramPublisher_TelegramOptionsValidation_ValidatesCorrectly(string baseUrl, string botToken, long chatId, bool isValid)
     {
         // Arrange
@@ -56,7 +56,7 @@ public class HealthChecksBuilderExtensionsTest
         healthChecksBuilder.AddTelegramPublisher(t =>
         {
             t.BaseUrl = "https://api.telegram.org";
-            t.BotToken = "3141592654:66666000000000066666111113333355555";
+            t.BotToken = "3141592654:88888000000000088888111113333355555";
             t.ChatId = -2718281828;
         }, p =>
         {
@@ -100,7 +100,7 @@ public class HealthChecksBuilderExtensionsTest
         var telegramOptions = serviceProvider.GetRequiredService<IOptions<TelegramOptions>>().Value;
 
         Assert.Equal("https://api.telegram.org", telegramOptions.BaseUrl);
-        Assert.Equal("3141592654:66666000000000066666111113333355555", telegramOptions.BotToken);
+        Assert.Equal("3141592654:88888000000000088888111113333355555", telegramOptions.BotToken);
         Assert.Equal(-2718281828, telegramOptions.ChatId);
     }
 
@@ -157,7 +157,7 @@ public class HealthChecksBuilderExtensionsTest
         healthChecksBuilder.AddTelegramPublisher(t =>
         {
             t.BaseUrl = "https://api.telegram.org";
-            t.BotToken = "3141592654:66666000000000066666111113333355555";
+            t.BotToken = "3141592654:88888000000000088888111113333355555";
             t.ChatId = -2718281828;
         });
 
@@ -166,7 +166,7 @@ public class HealthChecksBuilderExtensionsTest
         var telegramOptions = serviceProvider.GetRequiredService<IOptions<TelegramOptions>>().Value;
 
         Assert.Equal("https://api.telegram.org", telegramOptions.BaseUrl);
-        Assert.Equal("3141592654:66666000000000066666111113333355555", telegramOptions.BotToken);
+        Assert.Equal("3141592654:88888000000000088888111113333355555", telegramOptions.BotToken);
         Assert.Equal(-2718281828, telegramOptions.ChatId);
     }
 
@@ -184,7 +184,7 @@ public class HealthChecksBuilderExtensionsTest
         healthChecksBuilder.AddTelegramPublisher(t =>
         {
             t.BaseUrl = "https://api.telegram.org";
-            t.BotToken = "3141592654:66666000000000066666111113333355555";
+            t.BotToken = "3141592654:88888000000000088888111113333355555";
             t.ChatId = -2718281828;
         }, p =>
         {
