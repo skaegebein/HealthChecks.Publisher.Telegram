@@ -19,7 +19,7 @@ public sealed class PublisherOptions
     /// Gets or sets the function used to format the health report into a Telegram message string.
     /// </summary>
     /// <remarks>
-    /// Per default, the formatter returns the string representation of the health status.
+    /// Per default, the formatter returns the <see langword="string"/> representation of the health status.
     /// </remarks>
     public Func<HealthReport, string> Formatter { get; set; } = (report) => report.Status.ToString();
 }
