@@ -11,7 +11,7 @@ namespace HealthChecks.Publisher.Telegram;
 public static class HealthChecksBuilderExtensions
 {
     /// <summary>
-    /// Adds Telegram publisher with configuration from app settings.
+    /// Adds a Telegram publisher.
     /// </summary>
     /// <param name="builder">The <see cref="IHealthChecksBuilder"/>.</param>
     /// <param name="appSettingsKey">The configuration section key.</param>
@@ -29,7 +29,7 @@ public static class HealthChecksBuilderExtensions
     }
 
     /// <summary>
-    /// Adds Telegram publisher with direct configuration.
+    /// Adds a Telegram publisher.
     /// </summary>
     /// <param name="builder">The <see cref="IHealthChecksBuilder"/>.</param>
     /// <param name="configureTelegram">The action to configure Telegram options.</param>
@@ -47,11 +47,11 @@ public static class HealthChecksBuilderExtensions
     }
 
     /// <summary>
-    /// Adds Telegram publisher with app settings and publish options configuration.
+    /// Adds a Telegram publisher.
     /// </summary>
     /// <param name="builder">The <see cref="IHealthChecksBuilder"/>.</param>
     /// <param name="appSettingsKey">The configuration section key.</param>
-    /// <param name="configurePublisher">The action to configure publish options.</param>
+    /// <param name="configurePublisher">The action to configure publisher options.</param>
     /// <returns>The <see cref="IHealthChecksBuilder"/> for chaining.</returns>
     public static IHealthChecksBuilder AddTelegramPublisher(this IHealthChecksBuilder builder, string appSettingsKey, Action<PublisherOptions> configurePublisher)
     {
@@ -67,11 +67,11 @@ public static class HealthChecksBuilderExtensions
     }
 
     /// <summary>
-    /// Adds Telegram publisher with full configuration options.
+    /// Adds a Telegram publisher.
     /// </summary>
     /// <param name="builder">The <see cref="IHealthChecksBuilder"/>.</param>
     /// <param name="configureTelegram">The action to configure Telegram options.</param>
-    /// <param name="configurePublisher">The action to configure publish options.</param>
+    /// <param name="configurePublisher">The action to configure publisher options.</param>
     /// <returns>The <see cref="IHealthChecksBuilder"/> for chaining.</returns>
     public static IHealthChecksBuilder AddTelegramPublisher(this IHealthChecksBuilder builder, Action<TelegramOptions> configureTelegram, Action<PublisherOptions> configurePublisher)
     {
