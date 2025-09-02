@@ -11,7 +11,7 @@ public sealed class PublisherOptions
     /// Gets or sets the predicate used to determine whether a health check result should be published.
     /// </summary>
     /// <remarks>
-    /// Per default, the predicate yields <see langword="true"/>.
+    /// By default, the predicate yields <see langword="true"/>.
     /// </remarks>
     public Func<HealthReport, HealthReport?, bool> Predicate { get; set; } = (_, _) => true;
 
@@ -19,7 +19,7 @@ public sealed class PublisherOptions
     /// Gets or sets the function used to format the health report into a Telegram message string.
     /// </summary>
     /// <remarks>
-    /// Per default, the formatter returns the <see langword="string"/> representation of the health status.
+    /// By default, the formatter returns the <see langword="string"/> representation of the health status.
     /// </remarks>
     public Func<HealthReport, string> Formatter { get; set; } = (report) => report.Status.ToString();
 }
