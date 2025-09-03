@@ -12,7 +12,6 @@
         <PackageId>HealthChecks.Publisher.Telegram</PackageId>
         <Title>.NET Health Check Publisher for Telegram</Title>
         <Description>A .NET library for publishing health check results to Telegram chats.</Description>
-        <Version>0.0.1</Version>
         <Authors>skaegebein</Authors>
         <PackageProjectUrl>https://github.com/skaegebein/HealthChecks.Publisher.Telegram</PackageProjectUrl>
         <RepositoryUrl>https://github.com/skaegebein/HealthChecks.Publisher.Telegram</RepositoryUrl>
