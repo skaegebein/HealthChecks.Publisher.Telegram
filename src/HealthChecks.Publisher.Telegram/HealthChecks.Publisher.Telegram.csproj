@@ -20,7 +20,6 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>diagnostics;monitoring;healthchecks;publish;telegram;</PackageTags>
-
     </PropertyGroup>
 
     <ItemGroup>
