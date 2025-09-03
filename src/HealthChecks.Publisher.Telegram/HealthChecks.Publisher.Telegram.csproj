@@ -18,7 +18,7 @@
         <RepositoryType>git</RepositoryType>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageTags>healthchecks;publish;telegram;dotnet;monitoring;</PackageTags>
+        <PackageTags>diagnostics;monitoring;healthchecks;publish;telegram;</PackageTags>
 
     </PropertyGroup>
 
