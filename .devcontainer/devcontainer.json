@@ -1,0 +1,22 @@
+{
+  "name": "healthchecks-publisher-telegram-dev",
+  "image": "mcr.microsoft.com/devcontainers/dotnet:1-8.0-bookworm-slim",
+  "runArgs": ["--name", "healthchecks-publisher-telegram-dev"],
+  "postCreateCommand": "dotnet restore",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-dotnettools.csdevkit", "esbenp.prettier-vscode"],
+      "settings": {
+        "[csharp]": {
+          "editor.defaultFormatter": "ms-dotnettools.csharp"
+        },
+        "[json]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[jsonc]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        }
+      }
+    }
+  }
+}
