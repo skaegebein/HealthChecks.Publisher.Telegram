@@ -4,9 +4,9 @@
 
 ## Prerequisites
 
-- **Telegram bot token** - Create a bot via [@BotFather](https://t.me/botfather) on Telegram
-- **Chat ID** - Send a message to your bot, then visit `https://api.telegram.org/bot<your-bot-token>/getUpdates` to find the chat ID
-- **ASP.NET Core health checks** - Configure using `AddHealthChecks()` in your application
+- Create a Telegram bot via [@BotFather](https://t.me/botfather) to obtain your **bot token**
+- Send a message to your bot, then visit `https://api.telegram.org/bot<your-bot-token>/getUpdates` to find the **chat ID**
+- Add [ASP.NET Core health checks](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-8.0) to your application and [configure the behavior of health check publishers](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-8.0#health-check-publisher)
 
 ## Quick Start
 
@@ -21,50 +21,9 @@ builder.Services.AddHealthChecks()
     });
 ```
 
-## ASP.NET Core Health Check Publisher Configuration
-
-[HealthCheckPublisherOptions](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-8.0#health-check-publisher) configure the behavior of health check publishers. You can set options globally or per health check registration.
-
-### Individual Publisher Options
-
-```cs
-public class RandomHealthCheck : IHealthCheck
-{
-    public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
-    {
-        return Task.FromResult(new HealthCheckResult((HealthStatus)Random.Shared.Next(3)));
-    }
-}
-```
-
-```cs
-// add health check with individual publisher options
-builder.Services.AddHealthChecks()
-    .Add(new HealthCheckRegistration("Random", new RandomHealthCheck(), HealthStatus.Unhealthy, ["random"])
-    {
-        Delay = TimeSpan.FromSeconds(5),
-        Period = TimeSpan.FromSeconds(10),
-    });
-```
-
-### Global Publisher Options
-
-```cs
-// add health check
-builder.Services.AddHealthChecks()
-    .Add(new HealthCheckRegistration("Random", new RandomHealthCheck(), HealthStatus.Unhealthy, ["random"]));
-
-// add global publisher options
-builder.Services.Configure<HealthCheckPublisherOptions>(options =>
-{
-    options.Delay = TimeSpan.FromSeconds(5);
-    options.Period = TimeSpan.FromSeconds(10);
-});
-```
-
 ## Telegram Publisher Configuration
 
-### Appsettings Section
+### App Settings Section
 
 ```json
 {
@@ -181,9 +140,6 @@ public class Program
         });
 
         var app = builder.Build();
-
-        // map health checks endpoint
-        app.MapHealthChecks("/api/health");
 
         app.Run();
     }
