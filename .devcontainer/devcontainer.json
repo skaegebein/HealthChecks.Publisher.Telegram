@@ -7,14 +7,9 @@
     "vscode": {
       "extensions": ["ms-dotnettools.csdevkit", "esbenp.prettier-vscode"],
       "settings": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
         "[csharp]": {
           "editor.defaultFormatter": "ms-dotnettools.csharp"
-        },
-        "[json]": {
-          "editor.defaultFormatter": "esbenp.prettier-vscode"
-        },
-        "[jsonc]": {
-          "editor.defaultFormatter": "esbenp.prettier-vscode"
         }
       }
     }
