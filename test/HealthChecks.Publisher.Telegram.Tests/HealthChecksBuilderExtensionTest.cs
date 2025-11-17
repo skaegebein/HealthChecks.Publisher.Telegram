@@ -61,7 +61,7 @@ public class HealthChecksBuilderExtensionsTest
         }, p =>
         {
             p.Predicate = (HealthReport current, HealthReport? previous) => previous is null || current.Status != previous.Status;
-            p.Formatter = (HealthReport report) => $"Status: {report.Status}, Duration: {report.TotalDuration.TotalMilliseconds} ms";
+            p.Formatter = (HealthReport report) => $"{report.Status} ({report.TotalDuration.TotalMilliseconds} ms)";
         });
 
         // Assert
@@ -178,7 +178,7 @@ public class HealthChecksBuilderExtensionsTest
         var healthChecksBuilder = services.AddHealthChecks();
 
         var predicate = (HealthReport current, HealthReport? previous) => previous is null || current.Status != previous.Status;
-        var formatter = (HealthReport report) => $"Status: {report.Status}, Duration: {report.TotalDuration.TotalMilliseconds} ms";
+        var formatter = (HealthReport report) => $"{report.Status} ({report.TotalDuration.TotalMilliseconds} ms)";
 
         // Act
         healthChecksBuilder.AddTelegramPublisher(t =>
@@ -215,9 +215,9 @@ public class HealthChecksBuilderExtensionsTest
         Assert.True(publisherOptions.Predicate(reportUnhealthy, reportDegraded));
         Assert.False(publisherOptions.Predicate(reportUnhealthy, reportUnhealthy));
 
-        Assert.Equal("Status: Healthy, Duration: 100 ms", publisherOptions.Formatter(reportHealthy));
-        Assert.Equal("Status: Degraded, Duration: 100 ms", publisherOptions.Formatter(reportDegraded));
-        Assert.Equal("Status: Unhealthy, Duration: 100 ms", publisherOptions.Formatter(reportUnhealthy));
+        Assert.Equal("Healthy (100 ms)", publisherOptions.Formatter(reportHealthy));
+        Assert.Equal("Degraded (100 ms)", publisherOptions.Formatter(reportDegraded));
+        Assert.Equal("Unhealthy (100 ms)", publisherOptions.Formatter(reportUnhealthy));
     }
 
     private static HealthReport CreateHealthReport(HealthStatus status)
