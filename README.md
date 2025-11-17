@@ -1,6 +1,6 @@
 # HealthChecks.Publisher.Telegram
 
-.NET Health Check Publisher for Telegram - A .NET library for publishing health check results to Telegram chats.
+A .NET library for publishing health check results to Telegram chats.
 
 ## Prerequisites
 
@@ -25,11 +25,13 @@ builder.Services.AddHealthChecks()
 
 ### App Settings Section
 
-```json
+```jsonc
 {
   "Telegram": {
     "BaseUrl": "https://api.telegram.org",
+    // your bot token
     "BotToken": "3141592654:88888000000000088888111113333355555",
+    // your chat id
     "ChatId": -2718281828
   }
 }
