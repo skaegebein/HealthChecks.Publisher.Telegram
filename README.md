@@ -85,7 +85,7 @@ builder.Services.AddHealthChecks()
                 _ => "❔",
             };
 
-            return $"{emoji} Status: {report.Status}, Duration: {report.TotalDuration.TotalMilliseconds} ms";
+            return $"{emoji} {report.Status} ({report.TotalDuration.TotalMilliseconds} ms)";
         };
     });
 ```
@@ -128,7 +128,7 @@ public class Program
                         _ => "❔",
                     };
 
-                    return $"{emoji} Status: {report.Status}, Duration: {report.TotalDuration.TotalMilliseconds} ms";
+                    return $"{emoji} {report.Status} ({report.TotalDuration.TotalMilliseconds} ms)";
                 };
             });
 
