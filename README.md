@@ -6,7 +6,7 @@ A .NET library for publishing health check results to Telegram chats.
 
 - Create a Telegram bot via [@BotFather](https://t.me/botfather) to obtain your **bot token**
 - Send a message to your bot, then visit `https://api.telegram.org/bot<your-bot-token>/getUpdates` to find the **chat ID**
-- Add [ASP.NET Core health checks](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-8.0) to your application and [configure the behavior of health check publishers](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-8.0#health-check-publisher)
+- Add [ASP.NET Core health checks](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-10.0) to your application and [configure the behavior of health check publishers](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-10.0#health-check-publisher)
 
 ## Quick Start
 
