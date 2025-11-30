@@ -1,6 +1,6 @@
 {
   "name": "healthchecks-publisher-telegram-dev",
-  "image": "mcr.microsoft.com/devcontainers/dotnet:dev-10.0",
+  "image": "mcr.microsoft.com/devcontainers/dotnet:10.0",
   "runArgs": ["--name", "healthchecks-publisher-telegram-dev"],
   "postCreateCommand": "dotnet restore",
   "customizations": {
